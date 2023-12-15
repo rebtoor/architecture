@@ -325,6 +325,39 @@ replacements:
       name: ctlplane
     fieldPaths:
     - spec.interfaces.0
+- source:
+    kind: ConfigMap
+    name: network-values
+    fieldPath: data.tenant.iface
+  targets:
+  - select:
+      group: metallb.io
+      kind: L2Advertisement
+      name: tenant
+    fieldPaths:
+    - spec.interfaces.0
+- source:
+    kind: ConfigMap
+    name: network-values
+    fieldPath: data.storage.iface
+  targets:
+  - select:
+      group: metallb.io
+      kind: L2Advertisement
+      name: storage
+    fieldPaths:
+    - spec.interfaces.0
+- source:
+    kind: ConfigMap
+    name: network-values
+    fieldPath: data.internalapi.iface
+  targets:
+  - select:
+      group: metallb.io
+      kind: L2Advertisement
+      name: internalapi
+    fieldPaths:
+    - spec.interfaces.0
 
 # DNS
 - source:
